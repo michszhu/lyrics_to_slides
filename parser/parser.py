@@ -6,7 +6,7 @@ output_file = open('output.txt', 'w+')
 def is_chord_line(line):
     # alt: avg # letters per word
 
-    chords = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    chords = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'F#']
     # need minor chords
     # need / chords e.g. D/F#
     # need # and flat chords
@@ -50,14 +50,16 @@ for i in range(0, len(input_list)):
 
 # remove empty lines
 output = [line for line in input_list if line]
+print(output)
 
 # line numbers of section dividers
-section_dividers = []
+section_dividers = [0]
 for i in range(0, len(output)):
     if output[i][0] == '-----':
         section_dividers.append(i)
 
 output_final = []
+
 # check if any sections are too large
 for i in range(1, len(section_dividers)):
     beg_section = section_dividers[i-1]
