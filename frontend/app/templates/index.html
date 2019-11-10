@@ -1,16 +1,23 @@
 <html>
-<h1>Lyrics to Google Slides Converter!</h1>
-<!--Frontend template for form to add newbies to database-->
-<form action="" method="POST">
-    <!--We specify this CSRF token for security reasons--->
-    {{ form.csrf_token }}
 
-    <!--Rendering the form-->
-    <p>
-        <b>{{ form.lyrics.label }}</b><br />
-        {{ form.lyrics }}
-    </p>
-    {{ form.submit }}
-</form>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}">
+</head>
+
+<body>
+    <h1>Lyrics to Google Slides Converter!</h1>
+    <!--Frontend template for form to add newbies to database-->
+    <form action="" method="POST">
+        <!--We specify this CSRF token for security reasons--->
+        {{ form.csrf_token }}
+
+        <!--Rendering the form-->
+        <p>
+            <b>{{ form.lyrics.label }}</b><br />
+            {{ form.lyrics }}
+        </p>
+        {{ form.submit }}
+    </form>
+</body>
 
 </html>
