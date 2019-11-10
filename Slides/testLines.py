@@ -6,11 +6,7 @@ from oauth2client import file, client, tools
 # getting the file of the template
 
 IMG_FILE = 'image.jpg'      # use your own!
-color = input('Would you like white (w) or black (b) slides? ')
-if color == 'b':
-    TMPLFILE = 'Indigitous Black'   # use your own!
-else:
-    TMPLFILE = 'Indigitous White'   # use your own!
+# color = input('Would you like white (w) or black (b) slides? ')
 
 SCOPES = (
     'https://www.googleapis.com/auth/drive',
@@ -26,7 +22,12 @@ DRIVE  = discovery.build('drive',  'v3', http=HTTP)
 SLIDES = discovery.build('slides', 'v1', http=HTTP)
 
 #replace lyrics
-def replaceLyrics(template):
+def replaceLyrics(template, color):
+    if color == 'b':
+        TMPLFILE = 'Indigitous Black'   # use your own!
+    else:
+        TMPLFILE = 'Indigitous White'   # use your own!
+    
     rsp = DRIVE.files().list(q="name='%s'" % TMPLFILE).execute().get('files')[0]
     DATA = {'name': 'Song Lyrics'}
     print('** Copying template %r as %r' % (rsp['name'], DATA['name']))
@@ -131,6 +132,7 @@ def replaceLyrics(template):
 
     print('DONE')
     print('Presentation Link: https://docs.google.com/presentation/d/', DECK_ID, sep='')
+    return 'https://docs.google.com/presentation/d/' + DECK_ID
 
 #callback error handling
 def callback(request_id, response, exception):
@@ -167,6 +169,6 @@ def permissions(file_id):
     ))
     batch.execute()
 
-with open('output.txt') as template:
-    lines = template.read().splitlines()
-    replaceLyrics(lines)
+# with open('output.txt') as template:
+#     lines = template.read().splitlines()
+#     replaceLyrics(lines)
