@@ -1,2 +1,3 @@
 frontend/venv
 .DS_Store
+frontend/app/__pycache__
