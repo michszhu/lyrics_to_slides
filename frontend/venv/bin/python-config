@@ -1,4 +1,4 @@
-#!/Users/markcheng/lyrics_to_slides/frontend/flask-workshop/venv/bin/python
+#!/Users/markcheng/lyrics_to_slides/frontend/venv/bin/python
 
 import sys
 import getopt
