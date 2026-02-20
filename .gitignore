@@ -1,3 +1,7 @@
 frontend/venv
 .DS_Store
 frontend/app/__pycache__
+frontend/app/secret.json
+frontend/secret.json
+*.db
+__pycache__
